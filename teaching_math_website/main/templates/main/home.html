@@ -1,10 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Welcome to My Django Site!</h1>
-    <p>Text</p>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <p class="logo__text">2+2=5</p>
+            </div>
+            <div class="navigation">
+                <ul class="nav">
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">Головна</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link"><pre>Навчальні матеріали</pre></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link">Тести</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link">Контакти</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="autorise">
+                <div class="block">
+                    <a href="" class="nav__circled ">Вхід</a>
+                    <a href="" class="nav__circled ">Реєстрація</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <section class="block_after_header">
+        </section>
+        <section class="blog">
+            <div class="blog__title">
+                <p>Сумський державний університет запрошує<br>гостей
+                на день відкритих дверей</p>
+            </div>
+            <div class="image">
+                <img class="sumdpu" src="image/img-sumdpu.png" alt="">
+            </div>
+            <div class="description">
+                <p>Вже цього понеділка (07.10.2024) на базі СумДПУ<br>
+                пройде щорічний день відкритих дверех, на якому<br>
+                всі бажаючі зможуть познайомитись з нашою<br>
+                дружньою сім’єю.<br>
+                <br>
+                Початок о 12:00 в актовій залі.<br>
+                До зустрічі!</p>
+                <div class="cont">
+                    <a href="" class="button__circled">Докладніше</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer"></footer>
 </body>
 </html>
