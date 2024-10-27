@@ -9,11 +9,42 @@
             Django App
         {% endblock %}
     </title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    {% endblock %}
     <script src="{% static 'js/main.js' %}" defer></script>
 </head>
 <body>
-    <p>cocodjambo</p>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <p class="logo__text">2+2=5</p>
+            </div>
+            <div class="navigation">
+                <ul class="nav">
+                    <li class="nav__item">
+                        <a href="{% url 'homepage' %}" class="nav__link">Головна</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link"><pre>Навчальні матеріали</pre></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link">Тести</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link">Контакти</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="autorise">
+                <div class="block">
+                    <a href="{% url 'users:login' %}" class="nav__circled ">Вхід</a>
+                    <a href="{% url 'users:register' %}" class="nav__circled ">Реєстрація</a>
+                </div>
+            </div>
+        </div>
+    </header>
     <main>
         {% block content %}
         {% endblock %}

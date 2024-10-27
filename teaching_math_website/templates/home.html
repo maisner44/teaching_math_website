@@ -1,4 +1,37 @@
-<!DOCTYPE html>
+{% extends 'layout.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+    <main class="main">
+        
+        <section class="blog">
+            <div class="blog__title">
+                <p>Сумський державний університет запрошує<br>гостей
+                на день відкритих дверей</p>
+            </div>
+            <div class="image">
+                <img class="sumdpu" src="image/img-sumdpu.png" alt="">
+            </div>
+            <div class="description">
+                <p>Вже цього понеділка (07.10.2024) на базі СумДПУ<br>
+                пройде щорічний день відкритих дверех, на якому<br>
+                всі бажаючі зможуть познайомитись з нашою<br>
+                дружньою сім’єю.<br>
+                <br>
+                Початок о 12:00 в актовій залі.<br>
+                До зустрічі!</p>
+                <div class="cont">
+                    <a href="" class="button__circled">Докладніше</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer"></footer>
+{% endblock %}
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -35,8 +68,8 @@
             </div>
             <div class="autorise">
                 <div class="block">
-                    <a href="" class="nav__circled ">Вхід</a>
-                    <a href="/users/register/" class="nav__circled ">Реєстрація</a>
+                    <a href="{% url 'users:login' %}" class="nav__circled ">Вхід</a>
+                    <a href="{% url 'users:register' %}" class="nav__circled ">Реєстрація</a>
                 </div>
             </div>
         </div>
@@ -68,4 +101,4 @@
     </main>
     <footer class="footer"></footer>
 </body>
-</html>
+</html> -->
