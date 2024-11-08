@@ -1,0 +1,88 @@
+/* General Styles */
+section {
+    max-width: 800px;
+    margin: auto;
+    padding: 2em;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #777;
+    margin-bottom: 1em;
+}
+
+/* Accordion Button */
+.accordion {
+    background-color: #f7f7f7;
+    color: #444;
+    cursor: pointer;
+    padding: 1em;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: left;
+    outline: none;
+    font-size: 1.1em;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.accordion:hover {
+    background-color: #e6e6e6;
+}
+
+.active, .accordion:hover {
+    background-color: #E3E9FF;
+    color: #333;
+}
+
+.accordion:after {
+    content: '\002B';
+    color: #555;
+    font-weight: bold;
+    float: right;
+    transition: transform 0.3s ease;
+}
+
+.active:after {
+    content: '\2212';
+}
+
+/* Accordion Panel */
+.panel {
+    padding: 1em;
+    background-color: #fff;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0 0 5px 5px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.panel p {
+    font-family: 'Arial', sans-serif;
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin: 0.5em 0;
+}
+
+.panel p:first-child {
+    font-weight: bold;
+    color: #888;
+    font-size: 0.85em;
+}

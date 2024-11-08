@@ -4,5 +4,5 @@ from .models import Lecture
 
 
 def lectures_list(request):
-    lectures = Lecture.objects.all().order_by('-date')
+    lectures = Lecture.objects.all()
     return render(request, 'lectures/lectures_list.html', {'lectures': lectures})
