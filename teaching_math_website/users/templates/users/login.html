@@ -1,19 +1,78 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
 {% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+            User Login
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/login_form.css' %}">
+    {% endblock %}
+    <script src="{% static 'js/main.js' %}" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <p class="logo__text">2+2=5</p>
+            </div>
+            <div class="navigation">
+                <ul class="nav">
+                    <li class="nav__item">
+                        <a href="{% url 'homepage' %}" class="nav__link">Головна</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="{% url 'lectures:lectures_list' %}" class="nav__link"><pre>Навчальні матеріали</pre></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link">Тести</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link">Контакти</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="autorise">
+                <div class="block">
+                    <a href="{% url 'users:login' %}" class="nav__circled ">Вхід</a>
+                    <a href="{% url 'users:register' %}" class="nav__circled ">Реєстрація</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
 
-{% block title %}
-    User Login
-{% endblock %}
+    {% block content %}
+        <div class="login-container">
+            <h1>User Login</h1>
+            <form class="form-with-validation" action="/users/login/" method="post">
+                {% csrf_token %} 
+                
+                <!-- Render each form field explicitly -->
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <ul class="errorlist">
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                {% endfor %}
 
-{% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/login_form.css' %}">
-{% endblock %}
-
-{% block content %}
-   <h1>User Login</h1>
-   <form class = "form-with-valdation" action= "/users/login/" method = "post">
-        {% csrf_token %} 
-        {{ form }}
-        <button class= "form-submit">Submit</button>
-    </form>
-{% endblock %}
+                <button class="form-submit">Submit</button>
+            </form>
+        </div>
+    {% endblock %}
+    </main>
+</body>
+</html>

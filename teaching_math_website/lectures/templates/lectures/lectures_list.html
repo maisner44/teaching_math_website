@@ -59,6 +59,9 @@
                         <div class="panel">
                             <p>{{ lecture.date }}</p>
                             <p>{{ lecture.body }}</p>
+                            {% if lecture.upload %}
+                                <p>Download file: <a href="{{ lecture.upload.url }}">{{ lecture.upload.name }}</a></p>
+                            {% endif %}
                         </div>
                     </article>
                 {% endfor %}

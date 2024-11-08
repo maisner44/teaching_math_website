@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% load static %}
 
 {% block title %}
     Home
@@ -13,7 +14,8 @@
                 на день відкритих дверей</p>
             </div>
             <div class="image">
-                <img class="sumdpu" src="image/img-sumdpu.png" alt="">
+                
+                <img class="sumdpu" src="{% static 'photo.jpg' %}" alt="Your Image">
             </div>
             <div class="description">
                 <p>Вже цього понеділка (07.10.2024) на базі СумДПУ<br>
