@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Lectures
+{% endblock %}
+
+{% block content %}
+    <section>
+    <h1>Lectures</h1>
+
+    {% for lecture in lectures %}
+        <article class="post">
+            <h2>{{ lecture.title }}</h2>
+            <p>{{ lecture.date }}</p>
+            <span>{{ lecture.body }}</span>
+        </article>
+    {% endfor %}
+</section>
+{% endblock %}
