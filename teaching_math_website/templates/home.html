@@ -8,7 +8,7 @@
 {% block content %}
     <main class="main">
         
-        <section class="blog">
+        <!-- <section class="blog">
             <div class="blog__title">
                 <p>Сумський державний університет запрошує<br>гостей
                 на день відкритих дверей</p>
@@ -29,7 +29,31 @@
                     <a href="" class="button__circled">Докладніше</a>
                 </div>
             </div>
-        </section>
+        </section> -->
+        <section class="after-header"></section>
+            <div class="wrapper">
+                <section class="container">
+                    <div class="title">
+                        <p class="title-text">Сумський державний університет запрошує<br>гостей на день відкритих дверей</p>
+                    </div>
+                    <div class="image">
+                        <img class = "sumdpu" src="{% static 'photo.jpg' %}" alt="image">
+                    </div>
+                    <div class="description">
+                        <p class="description-text">Вже цього понеділка (07.10.2024) на базі СумДПУ<br>
+                            пройде щорічний день відкритих дверех, на якому<br>
+                            всі бажаючі зможуть познайомитись з нашою<br>
+                            дружньою сім’єю.<br>
+                            <br>
+                            Початок о 12:00 в актовій залі.<br>
+                            До зустрічі!<br>
+                        </p>
+                    </div>
+                    <div class="about">
+                        <a href="" class="nav__link nav__circled ">Докладніше</a>
+                    </div>
+                </section>
+            </div>
     </main>
     <footer class="footer"></footer>
 {% endblock %}

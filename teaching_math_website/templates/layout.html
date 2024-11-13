@@ -10,13 +10,16 @@
         {% endblock %}
     </title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap" rel="stylesheet">
     {% block css %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     {% endblock %}
     <script src="{% static 'js/main.js' %}" defer></script>
 </head>
 <body>
-    <header class="header">
+    <!-- <header class="header">
         <div class="container">
             <div class="logo">
                 <p class="logo__text">2+2=5</p>
@@ -42,6 +45,32 @@
                     <a href="{% url 'users:login' %}" class="nav__circled ">Вхід</a>
                     <a href="{% url 'users:register' %}" class="nav__circled ">Реєстрація</a>
                 </div>
+            </div>
+        </div>
+    </header> -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <p class="logo__text">2+2=5</p>
+            </div>
+            <div class="navigation">
+                <ul class="nav">
+                    <li class="nav__item">
+                        <a href="{% url 'homepage' %}" class="nav__link">Головна</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="{% url 'lectures:lectures_list' %}" class="nav__link"><pre>Навчальні матеріали</pre></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link">Тести</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#footer" class="nav__link">Контакти</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="autorise">
+                <a href="{% url 'users:login' %}" class="nav__link nav__circled ">Вхід</a>
             </div>
         </div>
     </header>
