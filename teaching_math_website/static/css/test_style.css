@@ -1,0 +1,147 @@
+/* Загальні стилі для контейнера */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Заголовки */
+h1 {
+    font-size: 2.4rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+/* Стилі для списку тестів */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    margin-bottom: 1.5rem;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+ul li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+ul li a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007bff;
+    transition: color 0.2s ease;
+}
+
+ul li a:hover {
+    color: #0056b3;
+}
+
+ul li p {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Стилі для тестів (питання) */
+.question-block {
+    margin-bottom: 1.5rem;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.question-block label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.question-block input[type="text"],
+.question-block textarea,
+.question-block select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.question-block input:focus,
+.question-block textarea:focus,
+.question-block select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Помилки */
+.error {
+    color: #d9534f;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Кнопка для відправки */
+button {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Мобільна адаптація */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    ul li {
+        padding: 10px;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+}

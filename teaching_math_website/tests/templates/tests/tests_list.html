@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         {% block title %}
-            Django App
+            Lectures
         {% endblock %}
     </title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
@@ -15,8 +15,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap" rel="stylesheet">
     {% block css %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/test_style.css' %}">
     {% endblock %}
-    <script src="{% static 'js/main.js' %}" defer></script>
+    <!-- <script src="{% static 'js/main.js' %}" defer></script> -->
 </head>
 <body>
     <header class="header">
@@ -32,11 +33,9 @@
                     <li class="nav__item">
                         <a href="{% url 'lectures:lectures_list' %}" class="nav__link"><pre>Навчальні матеріали</pre></a>
                     </li>
-                    {% if user.is_authenticated %}
                     <li class="nav__item">
-                        <a href="{% url 'tests:tests_list' %}" class="nav__link">Тести</a>
+                        <a href="" class="nav__link">Тести</a>
                     </li>
-                    {% endif %}
                     <li class="nav__item">
                         <a href="#footer" class="nav__link">Контакти</a>
                     </li>
@@ -56,6 +55,21 @@
     </header>
     <main>
         {% block content %}
+        <div class="container">
+            <h1>Список тестів</h1>
+            {% if tests %}
+                <ul>
+                    {% for test in tests %}
+                        <li>
+                            <a href="{% url 'tests:test_detail' test.id %}">{{ test.name }}</a>
+                            <p>{{ test.description }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Наразі тестів немає.</p>
+            {% endif %}
+        </div>
         {% endblock %}
     </main>
 </body>

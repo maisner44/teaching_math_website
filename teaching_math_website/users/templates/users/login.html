@@ -33,9 +33,11 @@
                     <li class="nav__item">
                         <a href="{% url 'lectures:lectures_list' %}" class="nav__link"><pre>Навчальні матеріали</pre></a>
                     </li>
+                    {% if user.is_authenticated %}
                     <li class="nav__item">
-                        <a href="" class="nav__link">Тести</a>
+                        <a href="{% url 'tests:tests_list' %}" class="nav__link">Тести</a>
                     </li>
+                    {% endif %}
                     <li class="nav__item">
                         <a href="#footer" class="nav__link">Контакти</a>
                     </li>
