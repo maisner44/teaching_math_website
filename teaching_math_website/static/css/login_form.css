@@ -20,6 +20,7 @@ h1 {
 /* Form Group Styling */
 .form-group {
     margin-bottom: 1.5em;
+    width: 100%; /* Ensures form groups take up full width */
 }
 
 /* Labels */
@@ -27,6 +28,7 @@ h1 {
     font-weight: bold;
     margin-bottom: 0.5em;
     color: #4A4A4A;
+    display: block; /* Ensures labels align properly with inputs */
 }
 
 /* Input Fields */
@@ -34,8 +36,9 @@ h1 {
 .form-group input[type="password"],
 .form-group input[type="email"],
 .form-group select,
-.form-group textarea {
-    width: 100%;
+.form-group textarea,
+button.form-submit {
+    width: 100%; /* Ensures all elements take up the same width */
     padding: 0.8em;
     margin-top: 0.5em;
     border: 1px solid #cccccc;
@@ -44,6 +47,7 @@ h1 {
     color: #333;
     font-size: 1em;
     transition: border-color 0.3s ease;
+    box-sizing: border-box; /* Prevents padding from affecting width */
 }
 
 .form-group input[type="text"]:focus,
@@ -57,14 +61,11 @@ h1 {
 
 /* Submit Button */
 button.form-submit {
-    width: 100%;
-    padding: 0.8em;
     background-color: #7A92DB;
     color: white;
     font-size: 1em;
     font-weight: bold;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }

@@ -78,6 +78,16 @@
     }
 }
 
+@media (min-width: 1200px) {
+    .nav__link {
+        font-size: 18px;
+    }
+    .nav {
+        gap: 20%;
+    }
+    
+}
+
 
 .after-header {
     background-color: #E3E9FF;

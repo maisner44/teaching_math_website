@@ -69,9 +69,16 @@
                     </li>
                 </ul>
             </div>
-            <div class="autorise">
-                <a href="{% url 'users:login' %}" class="nav__link nav__circled ">Вхід</a>
-            </div>
+            {% if user.is_authenticated %}
+                <form class="logout" action="{% url 'users:logout' %}" method="post" id="logout-form">
+                    {% csrf_token %}
+                    <a href="#" onclick="document.getElementById('logout-form').submit();" class="nav__link nav__circled">Вихід</a>
+                </form>
+            {% else %}
+                <div class="autorise">
+                    <a href="{% url 'users:login' %}" class="nav__link nav__circled">Вхід</a>
+                </div>
+            {% endif %}
         </div>
     </header>
     <main>
