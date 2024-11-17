@@ -14,3 +14,6 @@ class AnswerForm(forms.Form):
             elif question.question_type == 'multiple':
                 choices = [(answer.id, answer.text) for answer in question.answers.all()]
                 self.fields[f'question_{question.id}'] = forms.MultipleChoiceField(label=question.text, choices=choices, widget=forms.CheckboxSelectMultiple, required=True)
+
+    def get_answers(self):
+        return {field.name: field.value() for field in self}

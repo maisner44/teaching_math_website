@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib import admin
-from .models import Test, Question, Answer
+from .models import Test, Question, Answer, TestResult, AnswerSelection
 
 
 class AnswerInline(admin.TabularInline):
@@ -36,3 +36,6 @@ class QuestionAdmin(admin.ModelAdmin):
 admin.site.register(Test)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer)
+admin.site.register(TestResult)
+admin.site.register(AnswerSelection)
+

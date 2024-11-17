@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results for {{ test.name }}</title>
+</head>
+<body>
+    <h1>Results for {{ test.name }}</h1>
+    <p>You scored {{ result.score }} out of {{ result.total_questions }} questions.</p>
+    <p>Your score: {{ result.score }}</p>
+    <a href="{% url 'tests:tests_list' %}">Back to Test List</a>
+</body>
+</html>

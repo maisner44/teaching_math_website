@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завершення тесту</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/test_style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <p class="logo__text">2+2=5</p>
+            </div>
+            <div class="navigation">
+                <ul class="nav">
+                    <li class="nav__item"><a href="{% url 'homepage' %}" class="nav__link">Головна</a></li>
+                    <li class="nav__item"><a href="{% url 'lectures:lectures_list' %}" class="nav__link">Навчальні матеріали</a></li>
+                    <li class="nav__item"><a href="" class="nav__link">Тести</a></li>
+                    <li class="nav__item"><a href="#footer" class="nav__link">Контакти</a></li>
+                </ul>
+            </div>
+            {% if user.is_authenticated %}
+                <form class="logout" action="{% url 'users:logout' %}" method="post" id="logout-form">
+                    {% csrf_token %}
+                    <a href="#" onclick="document.getElementById('logout-form').submit();" class="nav__link nav__circled">Вихід</a>
+                </form>
+            {% else %}
+                <div class="autorise">
+                    <a href="{% url 'users:login' %}" class="nav__link nav__circled">Вхід</a>
+                </div>
+            {% endif %}
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <h1>Ви завершили тест!</h1>
+            <p>Ваша оцінка буде збережена та доступна в результатах тесту.</p>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit">Переглянути результати</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

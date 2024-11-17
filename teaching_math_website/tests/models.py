@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 
@@ -58,7 +59,30 @@ class Answer(models.Model):
         self.clean()  # Call the clean method before saving
         super().save(*args, **kwargs)
 
+class TestResult(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    test = models.ForeignKey(Test, on_delete=models.CASCADE)
+    completed_at = models.DateTimeField(auto_now_add=True)
+    score = models.IntegerField(default=0)  # Store the raw score
+    total_questions = models.IntegerField(default=0)
 
+    def __str__(self):
+        return f"Result of {self.test.name} by {self.user.username}"
+
+
+
+class AnswerSelection(models.Model):
+    test_result = models.ForeignKey(TestResult, related_name="answers", on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    answer = models.ForeignKey(Answer, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.question.text}: {self.answer.text}"
+
+    @property
+    def is_correct(self):
+        return self.answer.is_correct
+    
 # Signals
 @receiver(pre_save, sender=Answer)
 def ensure_single_correct_answer(sender, instance, **kwargs):
