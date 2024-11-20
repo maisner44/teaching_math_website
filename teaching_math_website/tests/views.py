@@ -26,16 +26,22 @@ def test_detail(request, test_id):
 
                 # Перевіряємо, чи правильна відповідь
                 correct_answer = question.correct_answer.id
-                if answer_id == correct_answer:
+                if int(answer_id) == correct_answer:
                     correct_answers += 1
-
+           
             # Зберігаємо результат тесту для користувача
-            TestResult.objects.create(
-                user=request.user,  # Припускаємо, що користувач авторизований
+            print(correct_answers,'----------------')
+            test = get_object_or_404(Test, id=test_id)
+            if TestResult.objects.filter(user=request.user, test=test).first():
+                return redirect('tests:already_pass', test_id=test.id)
+            
+            result = TestResult.objects.create(
+                user=request.user,
                 test=test,
-                score=correct_answers,
+                score=str(correct_answers),
                 total_questions=questions.count(),
             )
+            print(result.score, result.total_questions,'-------------')
 
             # Перенаправляємо на сторінку результатів тесту
             return redirect('tests:test_results', test_id=test.id)
@@ -48,11 +54,23 @@ def test_detail(request, test_id):
 def test_results(request, test_id):
     test = get_object_or_404(Test, id=test_id)
     # Отримуємо результат тесту для цього користувача
-    result = TestResult.objects.filter(user=request.user, test=test).first()
+    result = TestResult.objects.filter(user=request.user, test=test).last()
+    result.refresh_from_db()
 
     if result:
         # Відображаємо результат тесту
         return render(request, 'tests/test_results.html', {'result': result, 'test': test})
+    else:
+        # Якщо результатів ще немає (наприклад, користувач не здав тест)
+        return HttpResponse("You have not completed this test yet.")
+
+def already_pass(request, test_id):
+    test = get_object_or_404(Test, id=test_id)
+    result = TestResult.objects.filter(user=request.user, test=test).last()
+    result.refresh_from_db()
+    if result:
+        # Відображаємо результат тесту
+        return render(request, 'tests/test_results_already_pass.html', {'result': result, 'test': test})
     else:
         # Якщо результатів ще немає (наприклад, користувач не здав тест)
         return HttpResponse("You have not completed this test yet.")
@@ -62,4 +80,4 @@ def submit_test(request, test_id):
     # Your logic for submitting the test goes here.
     # For example, you could handle form submissions or process test answers.
     
-    return render(request, 'tests/submit_test.html', {'test': test})
+    # return render(request, 'tests/submit_test.html', {'test': test})

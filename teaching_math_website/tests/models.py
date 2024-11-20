@@ -63,11 +63,11 @@ class TestResult(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     test = models.ForeignKey(Test, on_delete=models.CASCADE)
     completed_at = models.DateTimeField(auto_now_add=True)
-    score = models.IntegerField(default=0)  # Store the raw score
+    score = models.CharField(max_length=40)  # Store the raw score
     total_questions = models.IntegerField(default=0)
 
     def __str__(self):
-        return f"Result of {self.test.name} by {self.user.username}"
+        return f"Result of {self.test.name} by {self.user.username}, score{self.score}"
 
 
 
