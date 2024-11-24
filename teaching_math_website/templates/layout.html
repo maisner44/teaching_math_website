@@ -43,10 +43,14 @@
                 </ul>
             </div>
             {% if user.is_authenticated %}
-                <form class="logout" action="{% url 'users:logout' %}" method="post" id="logout-form">
-                    {% csrf_token %}
-                    <a href="#" onclick="document.getElementById('logout-form').submit();" class="nav__link nav__circled">Вихід</a>
-                </form>
+                <div class="current_user">
+                    <div>
+                        <form class="logout" action="{% url 'users:logout' %}" method="post" id="logout-form">
+                            {% csrf_token %}
+                            <a href="#" onclick="document.getElementById('logout-form').submit();" class="nav__link nav__circled">Вихід</a>
+                        </form>
+                    </div>
+                </div>
             {% else %}
                 <div class="autorise">
                     <a href="{% url 'users:login' %}" class="nav__link nav__circled">Вхід</a>
@@ -58,5 +62,6 @@
         {% block content %}
         {% endblock %}
     </main>
+    <footer></footer>
 </body>
 </html>

@@ -13,10 +13,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     {% block css %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/lecture_style.css' %}">
     {% endblock %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_HTML"></script>
     <script src="{% static 'js/main.js' %}" defer></script>
 </head>
 <body>
@@ -59,9 +61,9 @@
         {% block content %}
             <section>
                 <h2>Навчальний матеріал</h2>
-
+    
                 <h1>Лекції</h1>
-
+    
                 {% for lecture in lectures %}
                     <article class="post">
                         <button class="accordion">{{ lecture.title }}</button>
@@ -69,16 +71,19 @@
                             <p>{{ lecture.date }}</p>
                             <p>{{ lecture.body }}</p>
                             {% if lecture.upload %}
-                                <p>Download file: <a href="{{ lecture.upload.url }}">{{ lecture.upload.name }}</a></p>
+                                <p>
+                                    Download file: 
+                                    <a href="{{ lecture.upload.url }}" download>
+                                        <img src="{% static 'icons/download_icon.png' %}" alt="Download"><!-- Іконка для завантаження -->
+                                    </a>
+                                </p>
                             {% endif %}
                         </div>
                     </article>
                 {% endfor %}
-
-                
             </section>
-            
         {% endblock %}
     </main>
+    
 </body>
 </html>

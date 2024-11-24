@@ -56,11 +56,11 @@
     <main>
         {% block content %}
         <div class="container">
-            <h1>Список тестів</h1>
+            <h1 class="test_h">Список тестів</h1>
             {% if tests %}
-                <ul>
+                <ul class="test_ul">
                     {% for test in tests %}
-                        <li>
+                        <li class="test_list_item">
                             <a href="{% url 'tests:test_detail' test.id %}">{{ test.name }}</a>
                             <p>{{ test.description }}</p>
                         </li>

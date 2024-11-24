@@ -11,6 +11,8 @@ def tests_list(request):
 def test_detail(request, test_id):
     test = get_object_or_404(Test, id=test_id)
     questions = test.questions.all()
+    if TestResult.objects.filter(user=request.user, test=test).first():
+        return redirect('tests:already_pass', test_id=test.id)
     
     if request.method == 'POST':
         form = AnswerForm(request.POST, questions=questions)
@@ -30,7 +32,8 @@ def test_detail(request, test_id):
                     correct_answers += 1
            
             # Зберігаємо результат тесту для користувача
-            print(correct_answers,'----------------')
+            result_percentage = 100* (int(correct_answers)/int(questions.count()))
+            result_percentage_formatted = "{:.2f}".format(result_percentage).rstrip('0').rstrip('.')
             test = get_object_or_404(Test, id=test_id)
             if TestResult.objects.filter(user=request.user, test=test).first():
                 return redirect('tests:already_pass', test_id=test.id)
@@ -40,8 +43,8 @@ def test_detail(request, test_id):
                 test=test,
                 score=str(correct_answers),
                 total_questions=questions.count(),
+                result_percentage=str(result_percentage_formatted)
             )
-            print(result.score, result.total_questions,'-------------')
 
             # Перенаправляємо на сторінку результатів тесту
             return redirect('tests:test_results', test_id=test.id)

@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
+from django.utils.translation import gettext_lazy as _
 
 
 class Test(models.Model):
@@ -43,17 +44,26 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.text
-
+    
     # def clean(self):
-    #     """
-    #     Custom validation to prevent multiple correct answers for single-choice questions.
-    #     """
-    #     if self.is_correct and self.question.question_type == 'single':
-    #         # Check if another answer for the same question is already marked as correct
-    #         print(self.text,'-----------')
-    #         print(Answer.objects.filter(question=self.question, is_correct=True).exclude(pk=self.pk),'-------------------')
-    #         if Answer.objects.filter(question=self.question, is_correct=True).exclude(pk=self.pk).exists():
-    #             raise ValidationError("Only one correct answer is allowed for single-choice questions.")
+    #     # Перевірка, чи поле is_correct не None
+    #     if self.is_correct is None:
+    #         raise ValidationError({'is_correct': 'Поле "is_correct" є обов\'язковим для заповнення.'})
+        
+    #     # Перевірка, чи питання вже збережене
+    #     if self.question.pk is not None:
+    #         # Додатково: перевірка, щоб хоча б одна відповідь була правильною
+    #         if self.question.answers.filter(is_correct=True).count() == 0 and not self.is_correct:
+    #             raise ValidationError(_('Повинен бути хоча б один правильний варіант відповіді.'))
+            
+            
+    def add_warning(self, message):
+        # Додає попередження у форму, яке не блокує збереження
+        if hasattr(self, 'warning_messages'):
+            self.warning_messages.append(message)
+        else:
+            self.warning_messages = [message]
+   
 
     def save(self, *args, **kwargs):
         self.clean()  # Call the clean method before saving
@@ -65,6 +75,7 @@ class TestResult(models.Model):
     completed_at = models.DateTimeField(auto_now_add=True)
     score = models.CharField(max_length=40)  # Store the raw score
     total_questions = models.IntegerField(default=0)
+    result_percentage = models.CharField(max_length=10,default='')
 
     def __str__(self):
         return f"Result of {self.test.name} by {self.user.username}, score{self.score}"

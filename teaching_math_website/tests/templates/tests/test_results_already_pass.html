@@ -1,13 +1,17 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results for {{ test.name }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/test_results.css' %}">
 </head>
 <body>
     <h1>Ви вже пройшли даний тест</h1>
-    <h2>{{ result.score }}</h2>
-    <a href="{% url 'tests:tests_list' %}">Back to Test List</a>
+    <p>Ваш результат: {{ result.score }} / {{ result.total_questions }} 
+        ({{ result.result_percentage }}%).
+    </p>
+    <a href="{% url 'tests:tests_list' %}">Повернутись до списку тестів</a>
 </body>
 </html>

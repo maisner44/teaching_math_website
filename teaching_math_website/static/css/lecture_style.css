@@ -86,3 +86,25 @@ h2 {
     color: #888;
     font-size: 0.85em;
 }
+
+.panel p .MathJax_Display {
+    display: inline-block !important;  
+    text-align: center;                
+    margin: 1em 1em;                 
+    width: auto;                   
+    max-width: 100%;                  
+}
+
+.fas.fa-file-download {
+    font-size: 24px;  /* Збільшення розміру іконки */
+    color: #007bff;  /* Колір іконки */
+    text-decoration: none;  /* Видалити підкреслення */
+}
+.fas.fa-file-download:hover {
+    color: #0056b3;  /* Колір іконки при наведенні */
+}
+.panel img {
+    width: 20px;
+    height: 20px;
+}
+

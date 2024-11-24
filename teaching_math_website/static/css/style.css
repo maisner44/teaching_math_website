@@ -21,6 +21,11 @@
     font-family: "Darker Grotesque";
 }
 
+.nav__item a{
+    font-family: Inter;
+};
+
+
 .navigation {
     padding: 0; /* Reduces padding to better align with other elements */
 }
@@ -83,7 +88,7 @@
         font-size: 18px;
     }
     .nav {
-        gap: 20%;
+        gap: 40px;
     }
     
 }
