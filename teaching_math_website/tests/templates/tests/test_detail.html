@@ -65,18 +65,25 @@
                     {% csrf_token %}
                     {% for field in form %}
                         <div class="question-block">
-                            <label>{{ field.label }}</label>
-                            {{ field }}
+                            <label class="question-title">{{ field.label }}</label>
+                            {% for choice in field %}
+                                <div class="option">
+                                    {{ choice.tag }} <!-- input[type="radio"] -->
+                                    <label class="option-label" for="{{ choice.id_for_label }}">{{ choice.choice_label }}</label>
+                                </div>
+                            {% endfor %}
                             {% if field.errors %}
                                 <div class="error">{{ field.errors }}</div>
                             {% endif %}
                         </div>
                     {% endfor %}
                     <button type="submit">Завершити тест</button>
-                </form>                
+                </form>
+                                
             </div>
         {% endblock %}
     </main>
 </body>
 </html>
-    
+
+

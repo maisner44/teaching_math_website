@@ -1,9 +1,13 @@
 /* Загальні стилі для контейнера */
+body {
+    background-color: #f7f7f7;
+}
+
 .container {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #FFFFFF;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -75,7 +79,7 @@ ul li p {
     display: block;
     font-size: 1rem;
     font-weight: 500;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
     color: #333;
 }
 
@@ -131,9 +135,13 @@ button:hover {
     display: flex;
     align-items: center;        /* Вирівнює текст і формули по центру вертикально */
     flex-wrap: wrap;            /* Дозволяє переносити текст на новий рядок, якщо потрібно */
-    font-size: 18px;            /* Встановлення загального розміру шрифту */
+    font-size: 16px;           /* Встановлення загального розміру шрифту */
 }
-
+.question-title{
+    padding-bottom: 20px; 
+    margin: 0px;
+    font-size: 18px !important; 
+}
 /* Для кращого вигляду формули поруч із текстом */
 
 
@@ -163,4 +171,29 @@ button:hover {
     button {
         font-size: 1rem;
     }
+}
+
+
+/* Подсветка для вариантов ответа */
+.question-block input[type="radio"] {
+    display: none; /* Скрыть стандартное радио-кнопку */
+}
+
+.question-block .option-label {
+    display: block;
+    padding: 10px;
+    /* border: 1px solid #ccc;
+    border-radius: 5px; */
+    cursor: pointer;
+    background-color: #FFFFFF;
+    transition: background-color 0.2s ease;
+}
+
+.question-block .option-label:hover {
+    background-color: #E0FFF0; /* Подсветка при наведении */
+}
+
+/* Стиль для выбранного варианта */
+.question-block input[type="radio"]:checked + .option-label {
+    background-color: #E0FFF0; /* Постоянная подсветка для выбранного варианта */
 }
