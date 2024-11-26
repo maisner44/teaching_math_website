@@ -13,7 +13,7 @@ class CustomUserCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'first_name', 'last_name', 'is_staff', 'is_active']
+        fields = ['username']
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -28,7 +28,7 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'email', 'first_name', 'last_name', 'is_staff', 'is_active', 'generated_password'),
+            'fields': ('username', 'generated_password'),
         }),
     )
 
