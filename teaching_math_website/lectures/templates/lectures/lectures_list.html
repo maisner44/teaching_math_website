@@ -70,7 +70,7 @@
                         <button class="accordion">{{ lecture.title }}</button>
                         <div class="panel">
                             <p>{{ lecture.date }}</p>
-                            <p>{{ lecture.body }}</p>
+                            <p>{{ lecture.body|linebreaksbr }}</p>
                             {% if lecture.image %}
                                 <img class="lecture-image" src="{{ lecture.image.url }}" alt="{{ lecture.title }}">
                             {% endif %}
